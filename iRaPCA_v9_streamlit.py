@@ -60,7 +60,7 @@ st.markdown("We are a drug discovery team with an interest in the development of
 #---------------------------------#
 
 st.write("""
-# LIDeB Tools - iRaPCA (Beta version)
+# LIDeB Tools - iRaPCA v1.0
 
 iRaPCA Clustering is a clustering strategy based on an iterative combination of the random subspace approach (feature bagging),
 dimensionality reduction through Principal Component Analysis (PCA) and the k-means algorithm. The optimal number of clusters k
@@ -68,7 +68,7 @@ and the best subset of descriptors are selected from plots of silhouette coeffic
 Different validation metrics can be downloaded once the process has finished. A number of graphs may be built and readily downloaded
 through a simple click. 
 
-The tool uses the following packages [RDKIT](https://www.rdkit.org/docs/index.html), [Mordred](https://github.com/mordred-descriptor/mordred), [Scikit-learn](https://scikit-learn.org/stable/), [Plotly](https://plotly.com/python/),[MolVS](https://github.com/mcs07/MolVS),[validclust](https://github.com/crew102/validclust))
+The tool uses the following packages [RDKIT](https://www.rdkit.org/docs/index.html), [Mordred](https://github.com/mordred-descriptor/mordred), [Scikit-learn](https://scikit-learn.org/stable/), [Plotly](https://plotly.com/python/),[MolVS](https://github.com/mcs07/MolVS),[validclust](https://github.com/crew102/validclust)
 
 The next workflow summarizes the steps performed by this method:
     
@@ -99,7 +99,7 @@ if molecular_descriptors == True:
 
 else:
     st.sidebar.header('Upload your SMILES')
-    uploaded_file_1 = st.sidebar.file_uploader("Upload a CSV file with one SMILES per line", type=["csv"])
+    uploaded_file_1 = st.sidebar.file_uploader("Upload a .CSV file with one SMILES per line (must be contained in the first column, or in a column named ‘SMILES’ in any position"), type=["csv"])
     st.sidebar.markdown("""
     [Example CSV input file](https://raw.githubusercontent.com/Capigol/iRaPCA_v1/main/example_molecules.csv)
     """)
