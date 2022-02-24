@@ -99,7 +99,8 @@ if molecular_descriptors == True:
 
 else:
     st.sidebar.header('Upload your SMILES')
-    uploaded_file_1 = st.sidebar.file_uploader("Upload a .CSV file with one SMILES per line. SMILES must be contained in the first column, or in a column named SMILES in any position), type=["csv"])
+    uploaded_file_1 = st.sidebar.file_uploader("Upload a .CSV file with one SMILES per line."), type=["csv"])
+    st.sidebar.write("SMILES must be contained in the first column, or in a column named SMILES in any position")
     st.sidebar.markdown("""
     [Example CSV input file](https://raw.githubusercontent.com/Capigol/iRaPCA_v1/main/example_molecules.csv)
     """)
