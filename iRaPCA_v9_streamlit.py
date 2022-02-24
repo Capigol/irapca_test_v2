@@ -328,17 +328,9 @@ def generar_subset(descriptores_ok, num_subsets: int, coef_correlacion: str, lim
         to_drop = [column for column in upper.columns if any(upper[column] > limite_correlacion)]
         curado=subset.drop(subset[to_drop], axis=1)
         total_molec_subset = curado.shape[0]
+        t.markdown("Generating descriptor subsets: " + str(i+1) +"/" + str(num_subsets))
         i = i+1
-        t.markdown("generating subsets: " + str(i+1) +"/" + str(num_subsets))
         subsets_ok.append(curado)
-    #     tamanios = []
-    #     # st.write(curado)
-    #     for x in subsets_ok:
-    #         tamanios.append(x.shape[1])
-    # st.markdown(f"**Round: {vuelta}**")
-    # if round != 1:
-    #     st.write("- The subset has: " + str(total_molec_subset) + " molecules")
-    # st.write("- The average number of descriptors by subset is: " + str(round(mean(tamanios),2)))
     return subsets_ok, total_molec_subset
 
 #%%
@@ -374,7 +366,7 @@ def clustering(subsets_ok, min_desc_subset: int, max_desc_subset: int, range_n_c
     subsets_seleccionados = []
     t = st.empty()
     for i, subset in enumerate(subsets_ok):
-        t.markdown("clustering subsets: " + str(i+1) +"/" + str(num_subsets))
+        t.markdown("Clustering subsets: " + str(i+1) +"/" + str(num_subsets))
         if min_desc_subset < len(subset.columns) < max_desc_subset:
             descriptores_normalizados = normalizar_descriptores(subset)
             if max_n_clusters > len(descriptores_normalizados.index):
@@ -860,12 +852,6 @@ def clustering_final_function(uploaded_file_1):
     
     st.markdown(":point_down: **Here you can download the cluster assignations**", unsafe_allow_html=True)
     st.markdown(filedownload(dataframe_final), unsafe_allow_html=True)
-    st.download_button(
-     label="Download data as CSV",
-     data=filedownload(dataframe_final),
-     file_name='large_df.csv',
-     mime='text/csv',)
-    #st.markdown(filedownload(dataframe_final), unsafe_allow_html=True)
 
     st.markdown(":point_down: **Here you can download a table with the cluster distibutions**", unsafe_allow_html=True)
     st.markdown(filedownload1(dataframe_final_1), unsafe_allow_html=True)
