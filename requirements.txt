@@ -1,7 +1,0 @@
-streamlit==1.0.0
-rdkit-pypi==2021.09.1
-scikit-learn
-molvs
-mordred
-validclust
-plotly==5.0.0
